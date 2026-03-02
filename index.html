@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rachael Greenfield • Fantasy Art Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-light: #020617;
+      --accent: #a855f7;
+      --accent-soft: rgba(168, 85, 247, 0.12);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --card-bg: #020617;
+      --border-subtle: #1f2937;
+      --radius-lg: 1.25rem;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.8);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, #1d2434 0, #020617 45%, #020617 100%),
+        radial-gradient(circle at bottom right, #1f2937 0, #020617 50%);
+      color: var(--text-main);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 3.5rem;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      margin-bottom: 2rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0.75rem;
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.95rem;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(168, 85, 247, 0.7);
+      background:
+        radial-gradient(circle at 30% 30%, #f9a8d4, #a855f7 40%, #4c1d95 90%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #020617;
+      box-shadow: 0 0 0 2px rgba(15, 23, 42, 0.9);
+    }
+
+    .brand-text-main {
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .brand-text-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    nav a {
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      transition: 0.18s ease;
+    }
+
+    nav a:hover {
+      color: var(--text-main);
+      border-color: rgba(168, 85, 247, 0.6);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .nav-cta {
+      background: var(--accent-soft);
+      border-color: rgba(168, 85, 247, 0.9);
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Hero section */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.6fr);
+      gap: 1.75rem;
+      align-items: center;
+      margin-bottom: 2.75rem;
+      margin-top: 1rem;
+    }
+
+    .hero-text {
+      padding-right: 1rem;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      padding: 0.25rem 0.75rem 0.25rem 0.35rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-pill-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 30%, #bfdbfe, #3b82f6 40%, #1d4ed8 90%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      border: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 4vw, 2.9rem);
+      line-height: 1.08;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title span.highlight {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 32rem;
+      line-height: 1.6;
+      margin-bottom: 1.3rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-tag {
+      font-size: 0.73rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: #e5e7eb;
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      align-items: center;
+    }
+
+    .btn-main {
+      padding: 0.6rem 1.15rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #c4b5fd, #a855f7);
+      color: #020617;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(129, 140, 248, 0.55);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, filter 0.15s ease;
+    }
+
+    .btn-main span.icon {
+      font-size: 1.1rem;
+    }
+
+    .btn-main:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+      box-shadow: 0 18px 40px rgba(129, 140, 248, 0.75);
+    }
+
+    .btn-ghost {
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.7);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: 0.18s ease;
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(168, 85, 247, 0.9);
+      color: var(--text-main);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .btn-ghost span.icon {
+      font-size: 1rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 1.1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-item strong {
+      display: block;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .hero-card {
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 0 0, rgba(168, 85, 247, 0.24), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(96, 165, 250, 0.3), transparent 60%),
+        linear-gradient(135deg, #020617, #020617);
+      border: 1px solid rgba(15, 23, 42, 1);
+      box-shadow: var(--shadow-soft);
+      padding: 0.9rem;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero-card-frame {
+      border-radius: calc(var(--radius-lg) - 0.55rem);
+      background:
+        radial-gradient(circle at 0 0, rgba(15, 23, 42, 0.35), transparent 55%),
+        linear-gradient(145deg, #020617, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      overflow: hidden;
+      position: relative;
+      min-height: 260px;
+    }
+
+    .hero-art {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.98;
+    }
+
+    .hero-card-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 0.65rem 0.85rem 0.8rem;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.96), transparent);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 0.75rem;
+    }
+
+    .hero-card-label {
+      font-size: 0.75rem;
+    }
+
+    .hero-card-label strong {
+      display: block;
+      color: #e5e7eb;
+      margin-bottom: 0.08rem;
+    }
+
+    .hero-card-label span {
+      color: var(--text-muted);
+    }
+
+    .hero-card-chip {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(168, 85, 247, 0.9);
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .hero-float {
+      position: absolute;
+      top: 0.9rem;
+      right: 0.9rem;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .hero-float-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.22);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 2.75rem;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title-block h2 {
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+      margin-bottom: 0.15rem;
+    }
+
+    .section-title-block p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .section-actions {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .section-actions a {
+      border-bottom: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    /* Gallery */
+    .gallery-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.9rem;
+      font-size: 0.75rem;
+    }
+
+    .filter-chip {
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: 0.18s ease;
+    }
+
+    .filter-chip.active {
+      background: var(--accent-soft);
+      border-color: rgba(168, 85, 247, 0.9);
+      color: var(--accent);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .art-card {
+      position: relative;
+      border-radius: 0.9rem;
+      overflow: hidden;
+      background: #020617;
+      border: 1px solid rgba(15, 23, 42, 1);
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, filter 0.18s ease;
+    }
+
+    .art-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.9);
+      border-color: rgba(168, 85, 247, 0.9);
+      filter: brightness(1.03);
+    }
+
+    .art-image-wrapper {
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+    }
+
+    .art-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .art-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .art-info {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 0.55rem 0.7rem 0.65rem;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.97), transparent);
+      font-size: 0.75rem;
+    }
+
+    .art-title {
+      font-weight: 500;
+      margin-bottom: 0.08rem;
+    }
+
+    .art-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+    }
+
+    .art-chip {
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      white-space: nowrap;
+    }
+
+    /* About */
+    .about {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.8fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .about-card {
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      background: linear-gradient(145deg, #020617, #020617);
+      border: 1px solid rgba(15, 23, 42, 1);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.85);
+    }
+
+    .about-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 30%, #f9a8d4, #a855f7 40%, #4c1d95 90%);
+      border: 2px solid rgba(15, 23, 42, 1);
+      margin-bottom: 0.6rem;
+    }
+
+    .about h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .about small {
+      font-size: 0.77rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .about p {
+      margin-top: 0.9rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .about-list {
+      margin-top: 0.9rem;
+      display: grid;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .about-list-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .about-details {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .about-details strong {
+      color: #e5e7eb;
+    }
+
+    .about-tags {
+      margin-top: 0.85rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .about-tag {
+      font-size: 0.74rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.7);
+      color: #e5e7eb;
+    }
+
+    /* Contact */
+    .contact-card {
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      background:
+        radial-gradient(circle at 0 0, rgba(168, 85, 247, 0.22), transparent 55%),
+        linear-gradient(145deg, #020617, #020617);
+      border: 1px solid rgba(15, 23, 42, 1);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.95);
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.2fr);
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .contact-card p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+      max-width: 26rem;
+    }
+
+    .contact-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    .contact-meta strong {
+      color: #e5e7eb;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .field label {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .field input,
+    .field textarea {
+      padding: 0.5rem 0.65rem;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.8rem;
+      outline: none;
+      resize: vertical;
+      min-height: 38px;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(168, 85, 247, 0.9);
+      box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.4);
+    }
+
+    .contact-note {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      border-bottom: 1px dashed rgba(148, 163, 184, 0.5);
+    }
+
+    /* Modal viewer */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+      padding: 1rem;
+    }
+
+    .modal-content {
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      background: #020617;
+      border-radius: 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 0;
+    }
+
+    .modal-image {
+      background: #020617;
+    }
+
+    .modal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #020617;
+    }
+
+    .modal-info {
+      padding: 1rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .modal-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #f9fafb;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: #e5e7eb;
+      cursor: pointer;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 900px) {
+      header {
+        border-radius: 1rem;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-text {
+        order: 1;
+        padding-right: 0;
+      }
+
+      .hero-visual {
+        order: 0;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .about {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .contact-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .modal-content {
+        grid-template-columns: minmax(0, 1fr);
+        max-height: 90vh;
+      }
+
+      .modal-info {
+        max-height: 40vh;
+        overflow-y: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding-inline: 1rem;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .hero-title {
+        font-size: 1.9rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-meta {
+        gap: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Top navigation -->
+    <header>
+      <div class="brand">
+        <div class="brand-logo">R</div>
+        <div>
+          <div class="brand-text-main">Rachael Greenfield</div>
+          <div class="brand-text-sub">Fantasy • Character • Worlds</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="nav-cta">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <div class="hero-pill">
+            <div class="hero-pill-dot">✦</div>
+            <span>New series: “Dungeons & Domestication”</span>
+          </div>
+          <h1 class="hero-title">
+            Fantasy <span class="highlight">worlds</span>, story-driven
+            <span class="highlight">characters</span>, and a little bit of magic.
+          </h1>
+          <p class="hero-subtitle">
+            Rachael draws mages, knights, dragons, and normies who wandered into the wrong
+            portal. Her work blends cozy storytelling with high-fantasy vibes—perfect for books,
+            TTRPGs, and character commissions.
+          </p>
+
+          <div class="hero-tags">
+            <div class="hero-tag">Fantasy Illustration</div>
+            <div class="hero-tag">Character Design</div>
+            <div class="hero-tag">TTRPG &amp; Book Art</div>
+          </div>
+
+          <div class="hero-actions">
+            <!-- TODO: put her email here -->
+            <a href="vrachael15@gmail.com?subject=Fantasy%20Character%20Commission%20Inquiry" class="btn-main">
+              <span class="icon">✉</span>
+              <span>Request a character</span>
+            </a>
+            <a href="#work" class="btn-ghost">
+              <span class="icon">↓</span>
+              <span>Browse the gallery</span>
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <strong>Specialties</strong>
+              Original characters, party portraits, cover art
+            </div>
+            <div class="hero-meta-item">
+              <strong>Tools</strong>
+              Pencil, ink, digital painting (Procreate / Photoshop)
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-card-frame">
+              <!-- TODO: replace with one of her fantasy pieces -->
+              <img
+             src="art/bbeg panel 3.jpg" alt="description here"
+                alt="Featured fantasy artwork by Rachael Greenfield"
+                class="hero-art"
+              />
+              <div class="hero-card-overlay">
+                <div class="hero-card-label">
+                  <strong>“Villains Downfall”</strong>
+                  <span>Digital Art, 2025</span>
+                </div>
+                <div class="hero-card-chip">Commission slots open</div>
+              </div>
+              <div class="hero-float">
+                <span class="hero-float-dot"></span>
+                Fantasy portfolio online
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Work / Gallery -->
+      <section id="work">
+        <div class="section-header">
+          <div class="section-title-block">
+            <h2>Selected Work</h2>
+            <p>Tap a piece to view it larger and see the story behind it.</p>
+          </div>
+       </div>
+
+        <div class="gallery-filters">
+          <button class="filter-chip active" data-filter="all">All</button>
+          <button class="filter-chip" data-filter="characters">Characters</button>
+          <button class="filter-chip" data-filter="worldbuilding">Worldbuilding</button>
+          <button class="filter-chip" data-filter="personal">Personal</button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+  <!-- 1–10: Characters -->
+  
+
+  <article class="art-card" data-category="characters">
+    <div class="art-image-wrapper">
+      <img src="art/piece 2.png" alt="Arty In Pink" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Pink is the new Fireball</div>
+      <div class="art-meta">
+        <span>showing that new agge of wizard does not need to only wear robes.</span>
+        <span class="art-chip">Character</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="art-card" data-category="characters">
+    <div class="art-image-wrapper">
+      <img src="art/piece 3.png" alt="Arty Profile" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Regal wizard</div>
+      <div class="art-meta">
+        <span>A quick sketch and side profile of a wizard in thought. </span>
+        <span class="art-chip">Character</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="art-card" data-category="worldbuilding">
+    <div class="art-image-wrapper">
+      <img src="art/piece 4.png" alt="Arty in Flames" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">A New Spell</div>
+      <div class="art-meta">
+        <span>The wizard learns a new spell in this short comic.</span>
+        <span class="art-chip">Worldbuilding</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="art-card" data-category="characters">
+    <div class="art-image-wrapper">
+      <img src="art/piece 5.png" alt="Astrea with flute" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Piece 5</div>
+      <div class="art-meta">
+        <span>Fantasy drawing</span>
+        <span class="art-chip">Character</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="art-card" data-category="personal">
+    <div class="art-image-wrapper">
+      <img src="art/piece 6.png" alt="bicorn striding" > 
+    </div>
+    <div class="art-info">
+      <div class="art-title">Bicorn Striding </div>
+      <div class="art-meta">
+        <span>The Bicorn Charged and prepared to strike at foe and possibly friend!</span>
+        <span class="art-chip">Personal</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="art-card" data-category="personal">
+    <div class="art-image-wrapper">
+      <img src="art/piece 7.png" alt="Bicorn Standing" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Menacing Bicorn</div>
+      <div class="art-meta">
+        <span>The paladins new mount was judging its new companion with weary but powerful eyes.</span>
+        <span class="art-chip">Personal</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="art-card" data-category="characters">
+    <div class="art-image-wrapper">
+      <img src="art/piece 8.png" alt="Cu Formal" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Druid In Formal </div>
+      <div class="art-meta">
+        <span> The party druid in a new less wild shape, much to his chagrin. </span>
+        <span class="art-chip">Character</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="art-card" data-category="characters">
+    <div class="art-image-wrapper">
+      <img src="art/piece 9.png" alt="Elf with shield" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Lorian</div>
+      <div class="art-meta">
+        <span>A Life Cleric, with a lot of heart, and soul to give</span>
+        <span class="art-chip">Character.</span>
+      </div>
+    </div>
+  </article>
+
+   <article class="art-card" data-category="characters">
+    <div class="art-image-wrapper">
+      <img src="art/piece 11.png" alt="Fantasy artwork 11" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Rogue </div>
+      <div class="art-meta">
+        <span>The gnomish rogue showing that more than looks can kill.</span>
+        <span class="art-chip">Character</span>
+      </div>
+    </div>
+  </article>
+
+  
+
+  <!-- 11–18: Worldbuilding -->
+ 
+
+  <article class="art-card" data-category="characters">
+    <div class="art-image-wrapper">
+      <img src="art/piece 12.png" alt="Isipni Headshot " />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Gnome Closeup</div>
+      <div class="art-meta">
+        <span>A hand drawn sketch of the inquisitive Gnomish Rogue.</span>
+        <span class="art-chip">Character</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="art-card" data-category="characters">
+    <div class="art-image-wrapper">
+      <img src="art/piece 14.png" alt="Fancy Kaalia" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">A knight to rememeber</div>
+      <div class="art-meta">
+        <span>Fanciful knight out for this hero. </span>
+        <span class="art-chip">Character</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="art-card" data-category="personal">
+    <div class="art-image-wrapper">
+      <img src="art/piece 15.png" alt="Kaalia in Bikini" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Dragonborn in Bikini</div>
+      <div class="art-meta">
+        <span>A simple sketch of Rachael's very own character, not in the usual mail but in a different kind of metal</span>
+        <span class="art-chip">Personal</span>
+      </div>
+    </div>
+  </article>
+
+ 
+  <article class="art-card" data-category="worldbuilding">
+    <div class="art-image-wrapper">
+      <img src="art/piece 19.png" alt="Comic Part 1" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">A new Beginning.</div>
+      <div class="art-meta">
+        <span>A new party Titan's Storm begin their new adventures.</span>
+        <span class="art-chip">Worldbuilding</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="art-card" data-category="worldbuilding">
+    <div class="art-image-wrapper">
+      <img src="art/piece 17.png" alt="Comic Panel Part 2" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Crossing of Fates</div>
+      <div class="art-meta">
+        <span>A fine day is offset, as an undead seems to be carrying something in its hands, as heroes they must investigate.  </span>
+        <span class="art-chip">Worldbuilding</span>
+      </div>
+    </div>
+  </article>
+   <article class="art-card" data-category="worldbuilding">
+    <div class="art-image-wrapper">
+      <img src="art/piece 16.png" alt="Mouse in Doom" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">A mouse in flight</div>
+      <div class="art-meta">
+        <span>A skeletal hand carries a transoformed mouse and mayhaps be the end of their days once its true form revealed.  </span>
+        <span class="art-chip">Worldbuilding</span>
+      </div>
+    </div>
+  </article>
+<article class="art-card" data-category="worldbuilding">
+    <div class="art-image-wrapper">
+      <img src="art/piece 20.png" alt="Comic 2nd to last" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Mouse True Form</div>
+      <div class="art-meta">
+        <span>The mouse erupts its transformation spell over, the great fire worm erupts in a expolsion of smoke and flame.</span>
+        <span class="art-chip">worldbuilding</span>
+      </div>
+    </div>
+  </article>
+  <article class="art-card" data-category="worldbuilding">
+    <div class="art-image-wrapper">
+      <img src="art/piece 10.png" alt="Dead End" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Dead End</div>
+      <div class="art-meta">
+        <span>The end to the sad tale of the previous party</span>
+        <span class="art-chip">Worldbuilding </span>
+      </div>
+    </div>
+  </article>
+  <article class="art-card" data-category="worldbuilding">
+    <div class="art-image-wrapper">
+      <img src="art/piece 18.png" alt="Party In hallway" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">New spoils</div>
+      <div class="art-meta">
+        <span>A quick commision of the party showing off new items, and the fighters new robes.</span>
+        <span class="art-chip">Worldbuilding</span>
+      </div>
+    </div>
+  </article>
+
+  <!-- 19–23: Personal -->
+
+  <article class="art-card" data-category="personal">
+    <div class="art-image-wrapper">
+      <img src="art/piece 1.png" alt="Arty in Bikini" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Wizards can be sexy too.</div>
+      <div class="art-meta">
+        <span>A far more risque and intimate look at a master of magic. </span>
+        <span class="art-chip">Personal</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="art-card" data-category="personal">
+    <div class="art-image-wrapper">
+      <img src="art/piece 13.png" alt="Fantasy artwork 13" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Gnome Closeup</div>
+      <div class="art-meta">
+        <span>A hand drawn sketch of the inquisitive Gnomish Rogue.</span>
+        <span class="art-chip">personal</span>
+      </div>
+    </div>
+  </article>
+
+  
+
+  
+
+  <article class="art-card" data-category="personal">
+    <div class="art-image-wrapper">
+      <img src="art/piece 21.png" alt="Squad X Banner" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Heroes Banner</div>
+      <div class="art-meta">
+        <span>Every good party needs a good banner, this is ours. Our number comes from our running death count.</span>
+        <span class="art-chip">Personal</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="art-card" data-category="characters">
+    <div class="art-image-wrapper">
+      <img src="art/piece 22.png" alt="Zarissa in Black" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Tiefling in black</div>
+      <div class="art-meta">
+        <span>Our Sorceror gets ready to go out on a night on the town.</span>
+        <span class="art-chip">Character</span>
+      </div>
+    </div>
+  </article>
+
+  <article class="art-card" data-category="characters">
+    <div class="art-image-wrapper">
+      <img src="art/piece 23.png" alt="Zarissa in magic pose" />
+    </div>
+    <div class="art-info">
+      <div class="art-title">Magical Pose</div>
+      <div class="art-meta">
+        <span>A simple drawing with pencil, of a Sorceror in a pose of magical nature.</span>
+        <span class="art-chip">Character</span>
+      </div>
+    </div>
+  </article>
+</div>
+      </section>
+
+      <!-- About -->
+      <section id="about">
+        <div class="section-header">
+          <div class="section-title-block">
+            <h2>Artist Statement</h2>
+            <p>Why she keeps drawing dragons instead of going to bed on time.</p>
+          </div>
+        </div>
+
+        <div class="about">
+          <div class="about-card">
+            <!-- TODO: swap this gradient circle for an actual photo of her if you want -->
+            <div class="about-avatar"></div>
+            <h3>Rachael Greenfield</h3>
+            <small>Fantasy illustrator &amp; character artist</small>
+            <p>
+              Rachael is obsessed with stories. Every drawing starts with a “who are they?” and
+              “what kind of trouble are they in?” From quiet hedge witches to over-dramatic
+              dragon riders, she uses shape, costume, and expression to make characters feel like
+              people you could actually adventure with.
+            </p>
+
+            <div class="about-list">
+              <div class="about-list-item">
+                <span class="dot"></span>
+                <span>Available for book covers, TTRPG parties, and character commissions.</span>
+              </div>
+              <div class="about-list-item">
+                <span class="dot"></span>
+                <span>Comfortable working from written prompts, vibes, or detailed references.</span>
+              </div>
+              <div class="about-list-item">
+                <span class="dot"></span>
+                <span>Delivers high-resolution files ready for print or digital use.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-details">
+            <p>
+              <strong>Approach.</strong> Most pieces start as small, messy thumbnails in a sketchbook.
+              Once the pose and silhouette feel right, Rachael refines line work and then builds up
+              lighting and color to match the mood of the story.
+            </p>
+            <p>
+              <strong>Subjects.</strong> Player characters, original fantasy worlds, cozy magic,
+              and “I swear this NPC matters” side characters. She loves drawing expressive faces,
+              layered outfits, and environments that hint at a larger world.
+            </p>
+            <p>
+              <strong>Materials.</strong> Pencil and ink on paper, marker rendering, and digital
+              painting in Procreate / Photoshop for final pieces and client work.
+            </p>
+
+            <div class="about-tags">
+              <div class="about-tag">Fantasy illustration</div>
+              <div class="about-tag">OC &amp; TTRPG art</div>
+              <div class="about-tag">Book &amp; cover art</div>
+              <div class="about-tag">Digital &amp; traditional</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact">
+        <div class="section-header">
+          <div class="section-title-block">
+            <h2>Contact &amp; Commissions</h2>
+            <p>Tell her about your character, party, or world.</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div>
+            <p>
+              Looking for cover art, a party illustration, or a portrait of your favorite OC?
+              Share a quick description of who they are, what you need the art for, and any
+              deadlines. Rachael will respond with pricing, timing, and options.
+            </p>
+            <div class="hero-actions">
+              <!-- TODO: same email as above -->
+              <a href="vrachael15@gmail.com?subject=Fantasy%20Art%20Commission%20Inquiry" class="btn-main">
+                <span class="icon">✉</span>
+                <span>Email Rachael</span>
+              </a>
+            </div>
+            <div class="contact-meta">
+              <strong>Typical turnaround:</strong> 2–6 weeks depending on complexity and queue.
+            </div>
+          </div>
+
+          <!-- NOTE: demo form for now -->
+          <form class="contact-form" onsubmit="alert('This demo form does not send yet. Please email Rachael directly.'); return false;">
+            <div class="field">
+              <label for="name">Your name</label>
+              <input id="name" type="text" placeholder="Name" />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" placeholder="you@example.com" />
+            </div>
+            <div class="field">
+              <label for="project">Who or what is this piece about?</label>
+              <textarea id="project" rows="3" placeholder="Character, party, setting, size, deadline, budget..."></textarea>
+            </div>
+            <button type="submit" class="btn-main">
+              <span class="icon">➤</span>
+              <span>Send message</span>
+            </button>
+            <div class="contact-note">
+              For now, this form shows a demo message. To actually contact her, email using the button above.
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>© <span id="year"></span> Rachael Greenfield. All rights reserved.</div>
+      <div>Site built with love by Jeremy.</div>
+    </footer>
+  </div>
+
+  <!-- Modal viewer -->
+  <div class="modal-backdrop" id="artModal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">×</button>
+      <div class="modal-image">
+        <img id="modalImage" src="" alt="" />
+      </div>
+      <div class="modal-info">
+        <div class="modal-title" id="modalTitle"></div>
+        <div id="modalCategory"></div>
+        <div id="modalDetails"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Filter buttons
+    const filterButtons = document.querySelectorAll(".filter-chip");
+    const artCards = document.querySelectorAll(".art-card");
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.getAttribute("data-filter");
+        filterButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        artCards.forEach((card) => {
+          const cat = card.getAttribute("data-category");
+          if (filter === "all" || filter === cat) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+
+    // Modal
+    const modal = document.getElementById("artModal");
+    const modalImg = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalCategory = document.getElementById("modalCategory");
+    const modalDetails = document.getElementById("modalDetails");
+    const modalClose = document.getElementById("modalClose");
+
+    artCards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const img = card.querySelector("img");
+        const title = card.querySelector(".art-title")?.textContent || "";
+        const meta = card.querySelector(".art-meta span")?.textContent || "";
+        const chip = card.querySelector(".art-chip")?.textContent || "";
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+        modalTitle.textContent = title;
+        modalCategory.textContent = chip ? "Category: " + chip : "";
+        modalDetails.textContent = meta;
+        modal.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    function closeModal() {
+      modal.style.display = "none";
+      document.body.style.overflow = "";
+    }
+
+    modalClose.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.style.display === "flex") {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
